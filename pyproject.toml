@@ -3,7 +3,7 @@ name = "llm-testgen-bench"
 version = "0.1.0"
 description = "Mutation-graded evaluation of LLM-generated pytest suites"
 requires-python = ">=3.11"
-license = { text = "MIT" }
+license = "MIT"
 dependencies = [
     "openai",
     "pydantic",
@@ -21,6 +21,9 @@ dev = ["pytest", "pytest-timeout"]
 
 [project.scripts]
 bench = "llm_testgen_bench.cli:app"
+
+[tool.setuptools]
+packages = ["llm_testgen_bench"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
