@@ -7,3 +7,4 @@ __pycache__/
 results/*
 !results/.gitkeep
 !results/leaderboard.md
+!results/kill_rates.png
