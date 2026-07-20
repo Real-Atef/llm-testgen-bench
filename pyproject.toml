@@ -1,0 +1,32 @@
+[project]
+name = "llm-testgen-bench"
+version = "0.1.0"
+description = "Mutation-graded evaluation of LLM-generated pytest suites"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+dependencies = [
+    "openai",
+    "pydantic",
+    "pydantic-settings",
+    "pyyaml",
+    "typer",
+    "rich",
+    "numpy",
+    "pandas",
+    "matplotlib",
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "pytest-timeout"]
+
+[project.scripts]
+bench = "llm_testgen_bench.cli:app"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["smoke: requires a running Ollama server"]
+addopts = "-q"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
