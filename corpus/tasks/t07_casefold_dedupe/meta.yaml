@@ -1,0 +1,22 @@
+id: t07_casefold_dedupe
+title: Case-insensitive dedupe (casefold)
+difficulty: 2
+failure_class: unicode_text
+entrypoint: casefold_dedupe
+description: >
+  Deduplicate strings case-insensitively while preserving first-seen order and
+  original spelling. Using casefold (not lower) is what makes German 'ß' and
+  Greek final sigma collide correctly.
+golden_cases:
+  - args: [["Hello", "hello", "HELLO"]]
+    expected: ["Hello"]
+  - args: [["a", "B", "b", "A"]]
+    expected: ["a", "B"]
+  - args: [[]]
+    expected: []
+  - args: [["straße", "STRASSE"]]
+    expected: ["straße"]
+  - args: [["Café", "CAFÉ", "cafe"]]
+    expected: ["Café", "cafe"]
+  - args: [["x", "x", "x"]]
+    expected: ["x"]

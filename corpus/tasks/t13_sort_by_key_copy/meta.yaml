@@ -1,0 +1,20 @@
+id: t13_sort_by_key_copy
+title: Stable sort by key, without mutating input
+difficulty: 3
+failure_class: mutation_aliasing
+entrypoint: sort_by_key
+description: >
+  Return a new list sorted by a sub-element, leaving the caller's list in its
+  original order. Elements are lists (not tuples) so JSON/YAML ground truth
+  round-trips cleanly; a good suite should assert the input is untouched.
+golden_cases:
+  - args: [[[2, "a"], [1, "b"], [1, "c"]], 0]
+    expected: [[1, "b"], [1, "c"], [2, "a"]]
+  - args: [[], 0]
+    expected: []
+  - args: [[[5, "x"]], 0]
+    expected: [[5, "x"]]
+  - args: [[[3, "x"], [1, "y"], [2, "z"]], 0]
+    expected: [[1, "y"], [2, "z"], [3, "x"]]
+  - args: [[[1, "a"], [1, "b"], [1, "c"]], 0]
+    expected: [[1, "a"], [1, "b"], [1, "c"]]

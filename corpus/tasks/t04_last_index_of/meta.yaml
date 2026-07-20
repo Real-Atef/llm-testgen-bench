@@ -1,0 +1,21 @@
+id: t04_last_index_of
+title: Index of last occurrence, or -1
+difficulty: 1
+failure_class: empty_and_none
+entrypoint: last_index_of
+description: >
+  Return the last index at which target appears, or -1 when it is absent or the
+  list is empty. The empty-list and not-found sentinel is the focus.
+golden_cases:
+  - args: [[1, 2, 3, 2, 1], 2]
+    expected: 3
+  - args: [[1, 2, 3], 4]
+    expected: -1
+  - args: [[], 1]
+    expected: -1
+  - args: [[5, 5, 5], 5]
+    expected: 2
+  - args: [["a", "b", "a"], "a"]
+    expected: 2
+  - args: [[0], 0]
+    expected: 0

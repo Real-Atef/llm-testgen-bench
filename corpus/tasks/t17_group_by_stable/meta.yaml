@@ -1,0 +1,22 @@
+id: t17_group_by_stable
+title: Group by parity, preserving order
+difficulty: 2
+failure_class: ordering_stability
+entrypoint: group_by_parity
+description: >
+  Partition integers into even/odd groups keeping input order within each group
+  and only creating groups that are used. Even/odd of negatives and zero are the
+  edge cases.
+golden_cases:
+  - args: [[3, 1, 2, 4, 5]]
+    expected: {odd: [3, 1, 5], even: [2, 4]}
+  - args: [[]]
+    expected: {}
+  - args: [[2, 4, 6]]
+    expected: {even: [2, 4, 6]}
+  - args: [[1, 3]]
+    expected: {odd: [1, 3]}
+  - args: [[0]]
+    expected: {even: [0]}
+  - args: [[-2, -3]]
+    expected: {even: [-2], odd: [-3]}

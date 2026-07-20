@@ -1,0 +1,22 @@
+id: t05_first_non_empty
+title: First non-empty string
+difficulty: 1
+failure_class: empty_and_none
+entrypoint: first_non_empty
+description: >
+  Return the first entry that is neither None nor blank (empty or whitespace).
+  Skipping None and whitespace-only strings while returning the original,
+  un-stripped value is the contract worth testing.
+golden_cases:
+  - args: [["", "  ", "hi"]]
+    expected: "hi"
+  - args: [[null, "x"]]
+    expected: "x"
+  - args: [["", "   "]]
+    expected: null
+  - args: [[]]
+    expected: null
+  - args: [["  a  "]]
+    expected: "  a  "
+  - args: [[null, null, "z", "y"]]
+    expected: "z"

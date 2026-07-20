@@ -1,0 +1,22 @@
+id: t12_price_with_tax
+title: Price with tax, rounded half-up
+difficulty: 2
+failure_class: float_precision
+entrypoint: price_with_tax
+description: >
+  Add an integer-percent tax to a cent amount, rounding half-up with integer
+  math. The exact half-cent boundary (e.g. 12.5 cents of tax) is the case that
+  separates correct rounding from float drift.
+golden_cases:
+  - args: [100, 8]
+    expected: 108
+  - args: [0, 20]
+    expected: 0
+  - args: [50, 10]
+    expected: 55
+  - args: [125, 10]
+    expected: 138
+  - args: [199, 8]
+    expected: 215
+  - args: [-1, 5]
+    raises: ValueError

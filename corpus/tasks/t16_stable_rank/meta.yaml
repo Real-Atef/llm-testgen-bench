@@ -1,0 +1,22 @@
+id: t16_stable_rank
+title: Competition ranking with ties
+difficulty: 2
+failure_class: ordering_stability
+entrypoint: rank_scores
+description: >
+  Assign 1-based competition ranks where equal scores tie and the following
+  rank is skipped ('1224'). The strict-greater-than count is the crux; a '>='
+  mutation breaks tie handling.
+golden_cases:
+  - args: [[10, 20, 20, 5]]
+    expected: [3, 1, 1, 4]
+  - args: [[]]
+    expected: []
+  - args: [[5, 5, 5]]
+    expected: [1, 1, 1]
+  - args: [[1, 2, 3]]
+    expected: [3, 2, 1]
+  - args: [[100]]
+    expected: [1]
+  - args: [[7, 7, 8, 6]]
+    expected: [2, 2, 1, 4]

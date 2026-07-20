@@ -1,0 +1,25 @@
+id: t08_grapheme_len
+title: Visible length ignoring combining marks
+difficulty: 2
+failure_class: unicode_text
+entrypoint: visible_length
+description: >
+  Count user-perceived characters by skipping combining marks, so a base letter
+  plus a combining accent counts once. The decomposed-vs-precomposed accent case
+  is the reason len() is the wrong answer.
+golden_cases:
+  - args: ["abc"]
+    expected: 3
+  - args: [""]
+    expected: 0
+  - args: ["é"]
+    expected: 1
+    note: e + combining acute (decomposed) counts as one
+  - args: ["áb́"]
+    expected: 2
+  - args: ["café"]
+    expected: 4
+    note: precomposed e-acute, all combining class 0
+  - args: ["café"]
+    expected: 4
+    note: decomposed cafe + combining acute -> still 4 visible

@@ -1,0 +1,22 @@
+id: t10_cents_sum
+title: Sum dollar amounts into integer cents
+difficulty: 2
+failure_class: float_precision
+entrypoint: sum_cents
+description: >
+  Add a list of floating-point dollar amounts and return integer cents,
+  rounding each amount before summing. The point is to avoid float accumulation
+  error; negative amounts round symmetrically.
+golden_cases:
+  - args: [[0.10, 0.20]]
+    expected: 30
+  - args: [[1.00]]
+    expected: 100
+  - args: [[]]
+    expected: 0
+  - args: [[-0.50]]
+    expected: -50
+  - args: [[0.01, 0.01, 0.01]]
+    expected: 3
+  - args: [[2.5, 2.5]]
+    expected: 500

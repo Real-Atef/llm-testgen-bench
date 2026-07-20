@@ -1,0 +1,24 @@
+id: t11_percent_split
+title: Split an amount into even integer parts
+difficulty: 2
+failure_class: float_precision
+entrypoint: split_amount
+description: >
+  Divide an integer amount of cents into n parts that sum exactly to the total,
+  distributing the remainder one cent at a time. The invariant "parts sum to the
+  total" is what a naive float split breaks.
+golden_cases:
+  - args: [100, 3]
+    expected: [34, 33, 33]
+  - args: [10, 4]
+    expected: [3, 3, 2, 2]
+  - args: [0, 1]
+    expected: [0]
+  - args: [7, 1]
+    expected: [7]
+  - args: [-10, 3]
+    expected: [-3, -3, -4]
+  - args: [5, 2]
+    expected: [3, 2]
+  - args: [10, 0]
+    raises: ValueError

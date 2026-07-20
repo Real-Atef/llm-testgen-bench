@@ -1,0 +1,19 @@
+id: t15_dedupe_preserve
+title: Order-preserving dedupe, without mutating input
+difficulty: 2
+failure_class: mutation_aliasing
+entrypoint: dedupe
+description: >
+  Remove duplicates while keeping first-seen order and leaving the input list
+  untouched. Uses equality rather than a set so it works on unhashable elements.
+golden_cases:
+  - args: [[1, 2, 2, 3, 1]]
+    expected: [1, 2, 3]
+  - args: [[]]
+    expected: []
+  - args: [[1, 1, 1]]
+    expected: [1]
+  - args: [["a", "b", "a", "c"]]
+    expected: ["a", "b", "c"]
+  - args: [[3, 2, 1]]
+    expected: [3, 2, 1]

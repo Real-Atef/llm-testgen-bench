@@ -1,0 +1,21 @@
+id: t14_rotate_left
+title: Rotate a list left, without mutating input
+difficulty: 2
+failure_class: mutation_aliasing
+entrypoint: rotate_left
+description: >
+  Rotate a list left by n, normalizing n into range so oversized and negative
+  shifts work, and returning a fresh list. The input must not be mutated.
+golden_cases:
+  - args: [[1, 2, 3, 4, 5], 2]
+    expected: [3, 4, 5, 1, 2]
+  - args: [[1, 2, 3, 4, 5], 0]
+    expected: [1, 2, 3, 4, 5]
+  - args: [[1, 2, 3, 4, 5], 7]
+    expected: [3, 4, 5, 1, 2]
+  - args: [[1, 2, 3, 4, 5], -1]
+    expected: [5, 1, 2, 3, 4]
+  - args: [[], 3]
+    expected: []
+  - args: [[1], 100]
+    expected: [1]

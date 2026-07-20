@@ -1,0 +1,22 @@
+id: t01_paginate_slice
+title: Paginate a list (1-indexed pages)
+difficulty: 1
+failure_class: off_by_one
+entrypoint: paginate
+description: >
+  Return the items for a 1-indexed page given a page size. Classic off-by-one
+  territory: the first page must start at index 0, and pages past the end must
+  return an empty list rather than raising.
+golden_cases:
+  - args: [[1, 2, 3, 4, 5], 1, 2]
+    expected: [1, 2]
+  - args: [[1, 2, 3, 4, 5], 3, 2]
+    expected: [5]
+  - args: [[1, 2, 3], 5, 2]
+    expected: []
+  - args: [[], 1, 3]
+    expected: []
+  - args: [[1, 2, 3], 0, 2]
+    raises: ValueError
+  - args: [[1, 2, 3], 1, 0]
+    raises: ValueError

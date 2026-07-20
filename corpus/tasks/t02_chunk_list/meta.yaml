@@ -1,0 +1,21 @@
+id: t02_chunk_list
+title: Chunk a list into fixed-size pieces
+difficulty: 1
+failure_class: off_by_one
+entrypoint: chunk
+description: >
+  Split a list into consecutive sublists of length `size`, the last of which
+  may be shorter. Boundary handling on the final partial chunk is the trap.
+golden_cases:
+  - args: [[1, 2, 3, 4, 5], 2]
+    expected: [[1, 2], [3, 4], [5]]
+  - args: [[1, 2, 3], 1]
+    expected: [[1], [2], [3]]
+  - args: [[], 3]
+    expected: []
+  - args: [[1, 2, 3, 4], 4]
+    expected: [[1, 2, 3, 4]]
+  - args: [[1, 2], 5]
+    expected: [[1, 2]]
+  - args: [[1, 2, 3], 0]
+    raises: ValueError

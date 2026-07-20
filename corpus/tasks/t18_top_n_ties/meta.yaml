@@ -1,0 +1,22 @@
+id: t18_top_n_ties
+title: Top-N scores with stable tie-breaking
+difficulty: 3
+failure_class: ordering_stability
+entrypoint: top_n
+description: >
+  Return the n largest scores, descending, with ties resolved by original
+  order. Sorting on (-score, index) makes the tie-break explicit; taking the
+  first n is the off-by-one-adjacent part.
+golden_cases:
+  - args: [[5, 3, 5, 1], 2]
+    expected: [5, 5]
+  - args: [[1, 2, 3], 5]
+    expected: [3, 2, 1]
+  - args: [[], 3]
+    expected: []
+  - args: [[4, 4, 4], 2]
+    expected: [4, 4]
+  - args: [[10, 20, 30], 0]
+    expected: []
+  - args: [[1, 2], -1]
+    raises: ValueError

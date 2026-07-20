@@ -1,0 +1,26 @@
+id: t21_parse_ipv4
+title: Validate a dotted-decimal IPv4 address
+difficulty: 3
+failure_class: parsing_validation
+entrypoint: is_valid_ipv4
+description: >
+  Validate an IPv4 address: exactly four numeric octets in 0-255, no leading
+  zeros, no empty parts, no signs. Leading-zero rejection and the 255/256
+  boundary are the cases worth several tests.
+golden_cases:
+  - args: ["1.2.3.4"]
+    expected: true
+  - args: ["0.0.0.0"]
+    expected: true
+  - args: ["255.255.255.255"]
+    expected: true
+  - args: ["256.1.1.1"]
+    expected: false
+  - args: ["01.2.3.4"]
+    expected: false
+  - args: ["1.2.3"]
+    expected: false
+  - args: ["1.2.3."]
+    expected: false
+  - args: ["a.b.c.d"]
+    expected: false

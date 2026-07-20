@@ -1,0 +1,22 @@
+id: t06_truncate_middle
+title: Truncate a string with a middle ellipsis
+difficulty: 3
+failure_class: empty_and_none
+entrypoint: truncate_middle
+description: >
+  Shorten a string to a fixed width by replacing the middle with '...'. The
+  result length, the odd/even split of kept characters, and the pass-through of
+  already-short strings are the tricky parts.
+golden_cases:
+  - args: ["Hello World", 8]
+    expected: "Hel...ld"
+  - args: ["short", 10]
+    expected: "short"
+  - args: ["abcdef", 6]
+    expected: "abcdef"
+  - args: ["abcdefg", 6]
+    expected: "ab...g"
+  - args: ["abcdefghij", 5]
+    expected: "a...j"
+  - args: ["anything", 4]
+    raises: ValueError

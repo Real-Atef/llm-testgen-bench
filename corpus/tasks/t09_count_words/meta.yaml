@@ -1,0 +1,22 @@
+id: t09_count_words
+title: Count whitespace-separated words
+difficulty: 1
+failure_class: unicode_text
+entrypoint: count_words
+description: >
+  Count words separated by any whitespace, tolerating leading, trailing, and
+  repeated spaces. A hand-rolled state machine (rather than split) exposes real
+  boundary logic to mutate.
+golden_cases:
+  - args: ["hello world"]
+    expected: 2
+  - args: ["   "]
+    expected: 0
+  - args: [""]
+    expected: 0
+  - args: ["one"]
+    expected: 1
+  - args: ["a  b   c"]
+    expected: 3
+  - args: ["  leading and trailing  "]
+    expected: 3

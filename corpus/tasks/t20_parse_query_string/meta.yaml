@@ -1,0 +1,22 @@
+id: t20_parse_query_string
+title: Parse a URL query string
+difficulty: 2
+failure_class: parsing_validation
+entrypoint: parse_query
+description: >
+  Turn a query string into a dict, with last-wins duplicate keys, bare keys
+  mapping to '', skipped empty pairs, and only the first '=' splitting a pair.
+  The 'a==b' and bare-key cases are the parser traps.
+golden_cases:
+  - args: ["a=1&b=2&a=3"]
+    expected: {a: "3", b: "2"}
+  - args: [""]
+    expected: {}
+  - args: ["x"]
+    expected: {x: ""}
+  - args: ["?a=1"]
+    expected: {a: "1"}
+  - args: ["a=&b"]
+    expected: {a: "", b: ""}
+  - args: ["a==b"]
+    expected: {a: "=b"}
