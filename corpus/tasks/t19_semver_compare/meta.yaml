@@ -20,3 +20,8 @@ golden_cases:
     raises: ValueError
   - args: ["1.2.x", "1.2.3"]
     raises: ValueError
+  - args: ["1.0.0", "2.0.x"]
+    raises: ValueError
+    note: >
+      invalid component in b must be rejected even though index 0 already
+      decides the order (regression from the adversarial corpus audit)
