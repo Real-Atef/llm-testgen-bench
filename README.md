@@ -45,14 +45,20 @@ subprocess pytest runs.
 
 ## Quickstart
 
+Two scripts, no prerequisites beyond Python 3.11+ and [Ollama](https://ollama.com):
+
 ```bash
-make setup                 # venv + install + freeze lockfile
-make test                  # 95 harness tests, no model calls
-make smoke                 # 2 tasks x a tiny model (needs Ollama) -> leaderboard + PNG
-make run                   # full matrix (edit models to ones you've pulled)
+./setup.sh          # venv + pinned deps + verify (95 tests)     | Windows: setup.bat
+./run.sh --smoke    # quick check against a tiny model            | Windows: run.bat --smoke
+./run.sh            # full 3-model matrix                         | Windows: run.bat
 ```
 
-No Make? Use `python verify.py` and `python -m llm_testgen_bench.cli …`.
+`setup.sh` installs from `requirements.lock`, so you get the exact versions these
+results were produced with. `run.sh` refuses to start if Ollama isn't reachable, and
+accepts a model list: `./run.sh qwen2.5-coder:7b`.
+
+Prefer Make? `make setup` / `make test` / `make smoke` / `make run` do the same.
+Neither? `python verify.py` and `python -m llm_testgen_bench.cli …`.
 
 ## Mutation operators (backend: `pymutant`, pure stdlib)
 
