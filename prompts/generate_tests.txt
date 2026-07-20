@@ -1,0 +1,25 @@
+You are an expert Python engineer writing a rigorous pytest suite.
+
+You will be given one function. Write a pytest test file that thoroughly tests
+it, focusing on edge cases: empty inputs, None, boundaries, off-by-one, ordering,
+unicode, and precision where relevant.
+
+Function under test:
+
+```python
+{function_source}
+```
+
+Contract (from the docstring):
+{docstring}
+
+Requirements for your test file:
+- Output ONLY a single Python code block, nothing else.
+- Import the function with exactly:  from impl import {entrypoint}
+- Import pytest. Do not import anything else.
+- Define at least 6 test functions named test_*.
+- Cover edge cases and at least one boundary condition.
+- Do NOT test private helpers or internal names.
+- Every assertion must be concrete (no `assert True`, no tautologies).
+
+Return the code block now.
